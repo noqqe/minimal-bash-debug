@@ -14,12 +14,12 @@ usage
 
 just add 
 
-  debug() {
-    debug=2 # set debug level 0|1|2|3
-    if [ -x .minimal-bash-debug ]; then
-    ./.minimal-bash-debug $debug $1 $2 "$3"
-    fi
-  }
+    debug() {
+      debug=2 # set debug level 0|1|2|3
+      if [ -x .minimal-bash-debug ]; then
+      ./.minimal-bash-debug $debug $1 $2 "$3"
+      fi
+    }
 
 to your bashscript and use:
 
