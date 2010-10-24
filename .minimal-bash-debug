@@ -1,0 +1,52 @@
+#!/bin/bash
+# .minimal-bash-debug: minimal debugging set for bash scripts
+# Copyright: (C) 2010 Florian Baumann <flo@noqqe.de>
+# License: GPL-3 <http://www.gnu.org/licenses/gpl-3.0.txt>
+# Date: Sunday 2010-10-24
+
+### variables
+# 
+debuglvl=$1 # get global debug level
+lvl=$2 # get debug level
+mode=$3 # get debug mode echo/syslog
+msg=$4 # get debug message
+prefix="bash-debug: "
+
+### mode: no debugging
+# if debuglvl = 0 stop printing debug messages
+# 
+if [ $debuglvl -eq 0 ]; then
+    exit 0
+fi
+
+### mode: echo debugging
+# print debugging messages on screen
+#
+if [ $mode = echo ]; then
+    if [ $lvl -ge $debuglvl ]; then
+        echo -n "$prefix"
+        echo "$msg"
+    fi
+fi 
+
+### mode: syslog debugging
+# use logger to write debug messages in
+# local syslog
+#
+if [ $mode = syslog ]; then
+    if [ $lvl -ge $debuglvl ]; then
+        logger -p local0.info -t $prefix "$msg"
+    fi
+fi
+
+### all debugging
+# echo and syslog debugging in one step. 
+#
+if [ $mode = all ]; then
+    if [ $lvl -ge $debuglvl ]; then
+        echo -n "$prefix"
+        echo "$msg"
+        logger -p local0.info -t $prefix "$msg"
+    fi 
+fi
+
