@@ -2,9 +2,7 @@ minimal-bash-debug
 ==================
 
 as its name implies: this is your minimal bash debugger. 
-
 minimal-bash-debug is simple to implement and to use. 
-
 just by adding a short bash snippet and it's minimal syntax.
 
 there are a lot of techniques for bash scripters to debug thier code and here's mine. 
@@ -23,9 +21,8 @@ just add
 
 to your bashscript and use:
 
-  debug 1 echo "variable foo is $foo"
-
-  debug 3 syslog "variable bar is $bar"
+    debug 1 echo "variable foo is $foo"
+    debug 3 syslog "variable bar is $bar"
 
 debugging
 ---------
