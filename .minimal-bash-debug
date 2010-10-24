@@ -12,6 +12,28 @@ mode=$3 # get debug mode echo/syslog
 msg=$4 # get debug message
 prefix="bash-debug: "
 
+### --help 
+if [ ${1:---help} = --help ]; then
+    echo "add these lines to your bashscript" 
+    echo
+    echo -e "  debug() {"
+    echo -e "    debug=2 # set debug level 0|1|2|3"
+    echo -e "    if [ -x .minimal-bash-debug ]; then"
+    echo -e "    ./.minimal-bash-debug \$debug \$1 \$2 \"\$3\""
+    echo -e "    fi"
+    echo -e "  }\n"
+    echo "then use:"
+    echo
+    echo "    debug 2 echo \"foo is \$foo\""
+    echo 
+    echo "to show debug messages"
+    echo "see http://github.com/noqqe/minimal-bash-debug/raw/master/example.sh"
+    echo "for further informations"
+    exit 0
+fi
+
+
+if [ -z $mode ]; then mode=nomode; fi
 ### mode: no debugging
 # if debuglvl = 0 stop printing debug messages
 # 
@@ -50,19 +72,3 @@ if [ $mode = all ]; then
     fi 
 fi
 
-### display --help
-
-if [ $1 = "--help" ]; then
-    echo "add these lines to your bashscript" 
-    echo "debug() {"
-    echo -e "\tdebug=2 # set debug level 0|1|2|3"
-    echo -e "\tif [ -x .minimal-bash-debug ]; then"
-    echo -e "\t ./.minimal-bash-debug \$debug \$1 \$2 \"\$3\""
-    echo -e "\tfi"
-    echo -e "}\n"
-    echo "then use:"
-    echo "debug 2 echo \"foo is \$foo\""
-    echo "to show debug messages"
-    echo "see http://github.com/noqqe/minimal-bash-debug/raw/master/example.sh"
-    echo "for further informations"
-fi
