@@ -7,10 +7,17 @@ just by adding a short bash snippet and it's minimal syntax.
 
 there are a lot of techniques for bash scripters to debug thier code and here's mine. 
 
+install
+-------
+
+    cd path/to/your/bashscript
+    wget http://github.com/noqqe/minimal-bash-debug/raw/master/.minimal-bash-debug 
+    chmod +x .minimal-bash-debug    
+
 usage
 -----
 
-just add 
+just ad:
 
     debug() {
       debug=2 # set debug level 0|1|2|3

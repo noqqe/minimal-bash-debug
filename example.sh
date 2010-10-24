@@ -51,7 +51,7 @@ debug 2 echo "userinput was $fnord"
 ### 4. #####################################################
 # lets debug $foo.
 # which is not of further interest.
-debug 1 echo "$foo in syslog and echo" 
+debug 1 echo "foo is $foo " 
 
 # global debug level is higher than 1. 
 # the message will not be printed. 
